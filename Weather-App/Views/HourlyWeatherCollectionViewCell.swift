@@ -13,7 +13,7 @@ class HourlyWeatherCollectionViewCell: UICollectionViewCell {
     var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = .systemFont(ofSize: 17, weight: .medium)
+//        label.font = .systemFont(ofSize: 17, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -21,6 +21,7 @@ class HourlyWeatherCollectionViewCell: UICollectionViewCell {
     var logo: UIImageView = {
         let logo = UIImageView()
         logo.clipsToBounds = true
+        logo.contentMode = .top
         logo.contentMode = .scaleAspectFit
         logo.translatesAutoresizingMaskIntoConstraints = false
         return logo
@@ -46,10 +47,9 @@ class HourlyWeatherCollectionViewCell: UICollectionViewCell {
     
     func configureCell(data: HourlyWeatherDataModel){
         let colorsConfig = UIImage.SymbolConfiguration(paletteColors: data.palletColors)
-        let sizeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .semibold)
         
         timeLabel.text = data.time
-        logo.image = UIImage(systemName: data.logo, withConfiguration: colorsConfig.applying(sizeConfig))
+        logo.image = UIImage(systemName: data.logo, withConfiguration: colorsConfig)
         temperatureLabel.text = data.temperature
     }
     

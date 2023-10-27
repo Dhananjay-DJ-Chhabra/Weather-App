@@ -21,6 +21,8 @@ class WeatherDetailsCardViewCell: UICollectionViewCell {
     
     let parameterLabel: UILabel = {
         let label = UILabel()
+        label.textColor = .gray
+        label.font = .systemFont(ofSize: 14)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -54,9 +56,8 @@ class WeatherDetailsCardViewCell: UICollectionViewCell {
     
     func configureView(data: WeatherDetailsCardDataModel){
         let colorsConfig = UIImage.SymbolConfiguration(paletteColors: data.palletColors)
-        let sizeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .semibold)
         
-        parameterLogo.image = UIImage(systemName: data.logo, withConfiguration: colorsConfig.applying(sizeConfig))
+        parameterLogo.image = UIImage(systemName: data.logo, withConfiguration: colorsConfig)
         parameterLabel.text = data.parameter
         parameterValueLabel.text = data.value
         parameterUnitsLabel.text = data.units
@@ -70,8 +71,8 @@ class WeatherDetailsCardViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             parameterLogo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             parameterLogo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            parameterLogo.heightAnchor.constraint(equalToConstant: 50),
-            parameterLogo.widthAnchor.constraint(equalToConstant: 50)
+            parameterLogo.heightAnchor.constraint(equalToConstant: 40),
+            parameterLogo.widthAnchor.constraint(equalToConstant: 40)
         ])
         
         contentView.addSubview(parameterLabel)

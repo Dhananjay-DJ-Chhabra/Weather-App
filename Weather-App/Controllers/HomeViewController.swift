@@ -92,7 +92,7 @@ class HomeViewController: UIViewController {
 }
 
 
-
+// MARK:  Collection View Delegate and Data Source Methods
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == hourlyWeatherCollectionView{
@@ -122,13 +122,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
 }
 
-
+// MARK: Sunrise - Sunset View
 extension HomeViewController{
     
     func setUpSunriseSunsetView(){
         sunsetSunriseView.backgroundColor = UIColor(hex: "#E7EBEE")
         sunsetSunriseView.layer.cornerRadius = 20
-//        sunsetSunriseView.clipsToBounds = true
         sunsetSunriseView.contentMode = .scaleAspectFit
         sunsetSunriseView.image = UIImage(named: "sunrise-sunset")
         sunsetSunriseView.addShadow(color: .black, opacity: 0.1, offset: CGSize(width: 0, height: 1), radius: 1)
@@ -139,7 +138,7 @@ extension HomeViewController{
         NSLayoutConstraint.activate([
             sunsetSunriseView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             sunsetSunriseView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
-            sunsetSunriseView.topAnchor.constraint(equalTo: weatherCardDetailsCollectionView.bottomAnchor, constant: 10),
+            sunsetSunriseView.topAnchor.constraint(equalTo: weatherCardDetailsCollectionView.bottomAnchor),
             sunsetSunriseView.heightAnchor.constraint(equalToConstant: 180),
             sunsetSunriseView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -20)
         ])
@@ -178,19 +177,23 @@ extension HomeViewController{
         let sunriseTimeLabel = UILabel()
         sunriseTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         sunriseTimeLabel.text = "07:12"
-        sunriseTimeLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        sunriseTimeLabel.font = .systemFont(ofSize: 16, weight: .medium)
         let sunriseLabel = UILabel()
         sunriseLabel.translatesAutoresizingMaskIntoConstraints = false
         sunriseLabel.text = "Sunrise"
+        sunriseLabel.textColor = .gray
+        sunriseLabel.font = .systemFont(ofSize: 14)
         
         let sunsetTimeLabel = UILabel()
         sunsetTimeLabel.translatesAutoresizingMaskIntoConstraints = false
         sunsetTimeLabel.text = "17:33"
         sunsetTimeLabel.textAlignment = .right
-        sunsetTimeLabel.font = .systemFont(ofSize: 18, weight: .semibold)
+        sunsetTimeLabel.font = .systemFont(ofSize: 16, weight: .medium)
         let sunsetLabel = UILabel()
         sunsetLabel.translatesAutoresizingMaskIntoConstraints = false
         sunsetLabel.text = "Sunset"
+        sunsetLabel.textColor = .gray
+        sunsetLabel.font = .systemFont(ofSize: 14)
         sunsetLabel.textAlignment = .right
         
         sunsetSunriseView.addSubview(sunriseTimeLabel)
@@ -220,11 +223,13 @@ extension HomeViewController{
     
 }
 
+// MARK: Weather Details Card View
 extension HomeViewController{
     
     func setUpWeatherDetailsView(){
         let weatherDetailasTitleLabel = UILabel()
         weatherDetailasTitleLabel.text = "Weather details"
+        weatherDetailasTitleLabel.textColor = .gray
         weatherDetailasTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         containerView.addSubview(weatherDetailasTitleLabel)
@@ -238,7 +243,7 @@ extension HomeViewController{
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(
             width: UIDevice.current.userInterfaceIdiom == .pad ? (view.bounds.width - 60) / 3 : (view.bounds.width - 50) / 2,
-            height: 180)
+            height: 160)
         layout.minimumInteritemSpacing = UIDevice.current.userInterfaceIdiom == .pad ? 8 : 10
         weatherCardDetailsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
@@ -251,17 +256,22 @@ extension HomeViewController{
         
         weatherCardDetailsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(weatherCardDetailsCollectionView)
+        
+        let iPadHeight: CGFloat = (160 + 10) * (6 / 3) // (card height + card vertical padding) * (cell count / cells per row)
+        let iPhoneHeight: CGFloat = (160 + 10) * (6 / 2)
+        let collectionViewHeight: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? iPadHeight : iPhoneHeight
+        
         NSLayoutConstraint.activate([
             weatherCardDetailsCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
             weatherCardDetailsCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             weatherCardDetailsCollectionView.topAnchor.constraint(equalTo: weatherDetailasTitleLabel.bottomAnchor, constant: 10),
-            weatherCardDetailsCollectionView.heightAnchor.constraint(equalToConstant: UIDevice.current.userInterfaceIdiom == .pad ? (180 + 10) * (6 / 3) : (180 + 10) * (6 / 2)),
+            weatherCardDetailsCollectionView.heightAnchor.constraint(equalToConstant: collectionViewHeight),
         ])
     }
     
 }
 
-
+// MARK: Fifteen Days Weather Details View
 extension HomeViewController{
     
     func setUpFifteenDaysView(){
@@ -332,7 +342,7 @@ extension HomeViewController{
     
 }
 
-
+// MARK: Hourly Weather Details Collection View
 extension HomeViewController{
     
     func setUpHourlyCollectionview(){

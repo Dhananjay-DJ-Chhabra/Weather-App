@@ -88,10 +88,10 @@ class WeatherView: UIView{
     
     func configureView(data: FifteenDaysWeatherDataModel){
         let colorsConfig = UIImage.SymbolConfiguration(paletteColors: data.palletColors)
-        let sizeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .semibold)
         
         weatherLabel.text = data.weather
-        logo.image = UIImage(systemName: data.logo, withConfiguration: colorsConfig.applying(sizeConfig))
+        logo.image = UIImage(systemName: data.logo, withConfiguration: colorsConfig)
+        
     }
     
     func setUpView(){

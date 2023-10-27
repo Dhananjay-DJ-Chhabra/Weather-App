@@ -78,7 +78,7 @@ class WeatherDetailsCardViewCell: UICollectionViewCell {
         contentView.addSubview(parameterLabel)
         NSLayoutConstraint.activate([
             parameterLabel.leadingAnchor.constraint(equalTo: parameterLogo.leadingAnchor),
-            parameterLabel.topAnchor.constraint(equalTo: parameterLogo.bottomAnchor, constant: 10),
+            parameterLabel.topAnchor.constraint(equalTo: parameterLogo.bottomAnchor, constant: 20),
             parameterLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
         

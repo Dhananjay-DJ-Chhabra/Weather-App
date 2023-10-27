@@ -11,6 +11,7 @@ class FifteenDaysWeatherViewCell: UIView {
     
     var dayLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -20,6 +21,7 @@ class FifteenDaysWeatherViewCell: UIView {
     var temperatureUpDownLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
+        label.font = .systemFont(ofSize: 15, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -27,7 +29,7 @@ class FifteenDaysWeatherViewCell: UIView {
     var stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.spacing = 10
+        stack.alignment = .center
         stack.distribution = .fillEqually
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
@@ -36,7 +38,6 @@ class FifteenDaysWeatherViewCell: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        setUpView()
     }
     
     required init?(coder: NSCoder) {
@@ -48,11 +49,19 @@ class FifteenDaysWeatherViewCell: UIView {
         temperatureUpDownLabel.text = data.temperatureRange
         weatherView.configureView(data: data)
         
+        
+        setUpView()
     }
     
     func setUpView(){
         addSubview(stackView)
-        stackView.bounds = self.frame
+        //stackView.bounds = self.frame
+        NSLayoutConstraint.activate([
+            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stackView.topAnchor.constraint(equalTo: topAnchor),
+            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
         
         stackView.addArrangedSubview(dayLabel)
         stackView.addArrangedSubview(weatherView)
@@ -72,6 +81,7 @@ class WeatherView: UIView{
     
     var weatherLabel: UILabel = {
         let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -79,7 +89,6 @@ class WeatherView: UIView{
     override init(frame: CGRect) {
         super.init(frame: .zero)
         
-        setUpView()
     }
     
     required init?(coder: NSCoder) {
@@ -92,6 +101,8 @@ class WeatherView: UIView{
         weatherLabel.text = data.weather
         logo.image = UIImage(systemName: data.logo, withConfiguration: colorsConfig)
         
+        
+        setUpView()
     }
     
     func setUpView(){
@@ -99,8 +110,8 @@ class WeatherView: UIView{
         NSLayoutConstraint.activate([
             logo.leadingAnchor.constraint(equalTo: leadingAnchor),
             logo.topAnchor.constraint(equalTo: topAnchor),
-            logo.heightAnchor.constraint(equalToConstant: 30),
-            logo.widthAnchor.constraint(equalToConstant: 30),
+            logo.heightAnchor.constraint(equalToConstant: 20),
+            logo.widthAnchor.constraint(equalToConstant: 20),
             logo.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         

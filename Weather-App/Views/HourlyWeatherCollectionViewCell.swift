@@ -13,7 +13,7 @@ class HourlyWeatherCollectionViewCell: UICollectionViewCell {
     var timeLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-//        label.font = .systemFont(ofSize: 17, weight: .medium)
+        label.font = .systemFont(ofSize: 15)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -29,7 +29,7 @@ class HourlyWeatherCollectionViewCell: UICollectionViewCell {
     
     var temperatureLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 17, weight: .medium)
+        label.font = .systemFont(ofSize: 15, weight: .medium)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

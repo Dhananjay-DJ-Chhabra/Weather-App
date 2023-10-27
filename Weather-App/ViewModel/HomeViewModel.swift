@@ -24,13 +24,13 @@ class HomeViewModel{
     
     
     let fifteenDaysWeatherForecast: [FifteenDaysWeatherDataModel] = [
-        FifteenDaysWeatherDataModel(day: "Today", logo: "cloud.sun", weather: "Partly Cloudy", temperatureRange: "18º/8º", palletColors: [.black, .orange]),
-        FifteenDaysWeatherDataModel(day: "Tommorow", logo: "cloud.fog", weather: "Fog", temperatureRange: "21º/10º", palletColors: [.black, .blue]),
-        FifteenDaysWeatherDataModel(day: "Thu", logo: "cloud.fog", weather: "Fog", temperatureRange: "21º/12º", palletColors: [.black, .blue]),
-        FifteenDaysWeatherDataModel(day: "Fri", logo: "cloud.fog", weather: "Fog", temperatureRange: "22º/9º", palletColors: [.black, .blue]),
-        FifteenDaysWeatherDataModel(day: "Sat", logo: "sun.max", weather: "Sunny", temperatureRange: "20º/8º", palletColors: [.orange]),
-        FifteenDaysWeatherDataModel(day: "Sun", logo: "sun.max", weather: "Sunny", temperatureRange: "19º/7º", palletColors: [.orange]),
-        FifteenDaysWeatherDataModel(day: "Mon", logo: "sun.max", weather: "Sunny", temperatureRange: "19º/6º", palletColors: [.orange])
+        FifteenDaysWeatherDataModel(day: "Today", logo: "cloud.sun", weather: "Partly Cloudy", temperatureRange: "18º / 8º", palletColors: [.black, .orange]),
+        FifteenDaysWeatherDataModel(day: "Tommorow", logo: "cloud.fog", weather: "Fog", temperatureRange: "21º / 10º", palletColors: [.black, .blue]),
+        FifteenDaysWeatherDataModel(day: "Thu", logo: "cloud.fog", weather: "Fog", temperatureRange: "21º / 12º", palletColors: [.black, .blue]),
+        FifteenDaysWeatherDataModel(day: "Fri", logo: "cloud.fog", weather: "Fog", temperatureRange: "22º / 9º", palletColors: [.black, .blue]),
+        FifteenDaysWeatherDataModel(day: "Sat", logo: "sun.max", weather: "Sunny", temperatureRange: "20º / 8º", palletColors: [.orange]),
+        FifteenDaysWeatherDataModel(day: "Sun", logo: "sun.max", weather: "Sunny", temperatureRange: "19º / 7º", palletColors: [.orange]),
+        FifteenDaysWeatherDataModel(day: "Mon", logo: "sun.max", weather: "Sunny", temperatureRange: "19º / 6º", palletColors: [.orange])
     ]
     
     let weatherDetailsCards: [WeatherDetailsCardDataModel] = [

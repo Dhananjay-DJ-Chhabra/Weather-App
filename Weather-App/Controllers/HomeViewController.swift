@@ -348,7 +348,7 @@ extension HomeViewController{
     func setUpHourlyCollectionview(){
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: view.bounds.width/6, height: 100)
+        layout.itemSize = CGSize(width: (view.bounds.width - 40) / 6, height: 100)
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         layout.minimumLineSpacing = 0
@@ -366,8 +366,8 @@ extension HomeViewController{
         
         containerView.addSubview(hourlyWeatherCollectionView)
         NSLayoutConstraint.activate([
-            hourlyWeatherCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-            hourlyWeatherCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            hourlyWeatherCollectionView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
+            hourlyWeatherCollectionView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20),
             hourlyWeatherCollectionView.topAnchor.constraint(equalTo: containerView.topAnchor),
             hourlyWeatherCollectionView.heightAnchor.constraint(equalToConstant: 120)
         ])
